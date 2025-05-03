@@ -1,18 +1,50 @@
 import Image from "next/image";
+import { useState } from "react";
 
 export default function Home() {
+  const [nickname, setNickname] = useState("");
+
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
       <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
         <div className="flex flex-col gap-[16px] items-center sm:items-start">
           <div className="flex flex-col items-center gap-6 p-7 md:flex-row rounded-2xl">
-            <div className="flex flex-col gap-2 bg-white rounded-2xl p-6 shadow-md">
-              <h1 className="text-[32px] font-bold leading-[40px]">
-                Websocket Chat
-              </h1>
-              <p className="text-[16px] text-gray-500">
-                A simple chat application using Websockets
-              </p>
+            <div className="flex flex-col gap-2 rounded-2xl p-6"
+              style={{
+                backgroundColor: "rgba(67, 67, 67, 0.7)", 
+                minWidth: "800px", 
+                minHeight: "400px"
+              }}
+            >
+              <div className="flex gap-2">
+                <div className="flex items-center justify-center">
+                  <p className="text-xl font-bold text-white">
+                    Chat Rooms
+                  </p>
+                </div>
+                <div className="h-10 w-1 rounded-2xl bg-emerald-50" />
+                <div className="flex items-center justify-center">
+                <p className="text-xl font-bold text-white">
+                  Enter yout nickname:{"  "}
+                    <input
+                      type="text"
+                      value={nickname}
+                      onChange={(e) => setNickname(e.target.value)}
+                      className="bg-emerald-50 text-gray-900 rounded-2xl px-4 py-2"
+                      placeholder="Nickname"
+                    />
+                  <button
+                    className="bg-emerald-50 text-gray-900 rounded-2xl px-4 py-2"
+                    onClick={() => {
+                      console.log(nickname);
+                      setNickname("");
+                    }}
+                    >
+                    Join
+                  </button>
+                </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
