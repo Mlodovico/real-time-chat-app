@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import { useState } from "react";
 
@@ -17,32 +18,34 @@ export default function Home() {
               }}
             >
               <div className="flex gap-2">
-                <div className="flex items-center justify-center">
+                <div className="flex  justify-center p-3 rounded h-100" style={{ backgroundColor: "rgba(67, 67, 67, 1)"}}>
                   <p className="text-xl font-bold text-white">
                     Chat Rooms
                   </p>
                 </div>
-                <div className="h-10 w-1 rounded-2xl bg-emerald-50" />
-                <div className="flex items-center justify-center">
-                <p className="text-xl font-bold text-white">
-                  Enter yout nickname:{"  "}
+                <div className="h-100 w-1 rounded-2xl bg-emerald-50" />
+                <div className="flex justify-center">
+                  <p className="text-xl font-bold text-white">
+                    Enter yout nickname:{"  "}
+                  </p>
+                  <div>
                     <input
                       type="text"
                       value={nickname}
                       onChange={(e) => setNickname(e.target.value)}
-                      className="bg-emerald-50 text-gray-900 rounded-2xl px-4 py-2"
+                      className="bg-emerald-50 text-gray-900 rounded px-4 py-2"
                       placeholder="Nickname"
                     />
-                  <button
-                    className="bg-emerald-50 text-gray-900 rounded-2xl px-4 py-2"
-                    onClick={() => {
-                      console.log(nickname);
-                      setNickname("");
-                    }}
-                    >
-                    Join
-                  </button>
-                </p>
+                    <button
+                      className="bg-emerald-50 text-gray-900 rounded px-4 py-2 mx-0.5"
+                      onClick={() => {
+                        console.log(nickname);
+                        setNickname("");
+                      }}
+                      >
+                      Join
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
