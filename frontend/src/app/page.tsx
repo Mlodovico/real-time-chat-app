@@ -10,41 +10,58 @@ export default function Home() {
       <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
         <div className="flex flex-col gap-[16px] items-center sm:items-start">
           <div className="flex flex-col items-center gap-6 p-7 md:flex-row rounded-2xl">
-            <div className="flex flex-col gap-2 rounded-2xl p-6"
+            <div
+              className="flex flex-col gap-2 rounded-2xl p-6"
               style={{
-                backgroundColor: "rgba(67, 67, 67, 0.7)", 
-                minWidth: "800px", 
-                minHeight: "400px"
+                backgroundColor: "rgba(67, 67, 67, 0.7)",
+                minWidth: "800px",
+                minHeight: "400px",
               }}
             >
               <div className="flex gap-2">
-                <div className="flex  justify-center p-3 rounded h-100" style={{ backgroundColor: "rgba(67, 67, 67, 1)"}}>
-                  <p className="text-xl font-bold text-white">
-                    Chat Rooms
-                  </p>
+                <div
+                  className="flex  justify-center p-3 rounded h-100"
+                  style={{ backgroundColor: "rgba(67, 67, 67, 1)" }}
+                >
+                  <p className="text-xl font-bold text-white">Chat Rooms</p>
                 </div>
                 <div className="h-100 w-1 rounded-2xl bg-emerald-50" />
-                <div className="flex justify-center">
-                  <p className="text-xl font-bold text-white">
-                    Enter yout nickname:{"  "}
-                  </p>
-                  <div>
-                    <input
-                      type="text"
-                      value={nickname}
-                      onChange={(e) => setNickname(e.target.value)}
-                      className="bg-emerald-50 text-gray-900 rounded px-4 py-2"
-                      placeholder="Nickname"
-                    />
-                    <button
-                      className="bg-emerald-50 text-gray-900 rounded px-4 py-2 mx-0.5"
-                      onClick={() => {
-                        console.log(nickname);
-                        setNickname("");
-                      }}
+                <div
+                  className="flex justify-center p-3 rounded h-100"
+                  style={{ backgroundColor: "rgba(67, 67, 67, 1)" }}
+                >
+                  <div className="flex justify-center">
+                    <p className="text-xl font-bold text-white">
+                      Enter yout nickname:{"  "}
+                    </p>
+                    <div>
+                      <input
+                        type="text"
+                        value={nickname}
+                        placeholder="Nickname"
+                        onChange={(e) => setNickname(e.target.value)}
+                        className=" text-gray-900 rounded px-4 py-2 mx-0.5"
+                        maxLength={20}
+                        minLength={3}
+                        style={{
+                          backgroundColor: "rgba(255, 255, 255, 0.5)",
+                        }}
+                        autoComplete="off"
+                      />
+                      <button
+                        className="bg-emerald-50 text-gray-900 rounded px-4 py-2 mx-0.5"
+                        onClick={() => {
+                          console.log(nickname);
+                          setNickname("");
+                        }}
                       >
-                      Join
-                    </button>
+                        Join
+                      </button>
+                    </div>
+                    <div
+                      className="w-100 h-100"
+                      style={{ backgroundColor: "rgba(67, 67, 67, 0.7)" }}
+                    ></div>
                   </div>
                 </div>
               </div>
