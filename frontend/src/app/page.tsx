@@ -1,9 +1,15 @@
 "use client";
 import Image from "next/image";
 import { useState } from "react";
+import { AiOutlineArrowRight } from "react-icons/ai";
 
 export default function Home() {
   const [nickname, setNickname] = useState("");
+  const [room, setRoom] = useState("");
+
+  const sendMessage = () => {
+    console.log("Sending mesage to the server");
+  };
 
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
@@ -11,36 +17,37 @@ export default function Home() {
         <div className="flex flex-col gap-[16px] items-center sm:items-start">
           <div className="flex flex-col items-center gap-6 p-7 md:flex-row rounded-2xl">
             <div
-              className="flex flex-col gap-2 rounded-2xl p-6"
+              className="flex justify-center gap-2 rounded-2xl p-6"
               style={{
                 backgroundColor: "rgba(67, 67, 67, 0.7)",
                 minWidth: "800px",
                 minHeight: "400px",
               }}
             >
-              <div className="flex gap-2">
+              <div className="flex w-full gap-2">
                 <div
-                  className="flex  justify-center p-3 rounded h-100"
+                  className="w-1/4 justify-center p-3 rounded h-100"
                   style={{ backgroundColor: "rgba(67, 67, 67, 1)" }}
                 >
                   <p className="text-xl font-bold text-white">Chat Rooms</p>
+                  <div>Bank Team</div>
                 </div>
                 <div className="h-100 w-1 rounded-2xl bg-emerald-50" />
                 <div
-                  className="flex justify-center p-3 rounded h-100"
-                  style={{ backgroundColor: "rgba(67, 67, 67, 1)" }}
+                  className="h-100 w-full rounded"
+                  style={{ backgroundColor: "rgba(67, 67, 67, 0.7)" }}
                 >
-                  <div className="flex justify-center">
+                  <div className="flex flex-col justify-center p-3">
                     <p className="text-xl font-bold text-white">
-                      Enter yout nickname:{"  "}
+                      Enter yout username:{"  "}
                     </p>
                     <div>
                       <input
                         type="text"
                         value={nickname}
-                        placeholder="Nickname"
+                        placeholder="Username"
                         onChange={(e) => setNickname(e.target.value)}
-                        className=" text-gray-900 rounded px-4 py-2 mx-0.5"
+                        className=" text-gray-900 rounded px-2 py-1 mx-0.5"
                         maxLength={20}
                         minLength={3}
                         style={{
@@ -49,7 +56,7 @@ export default function Home() {
                         autoComplete="off"
                       />
                       <button
-                        className="bg-emerald-50 text-gray-900 rounded px-4 py-2 mx-0.5"
+                        className="bg-emerald-50 text-gray-900 rounded px-4 py-1 mx-0.5"
                         onClick={() => {
                           console.log(nickname);
                           setNickname("");
@@ -58,10 +65,35 @@ export default function Home() {
                         Join
                       </button>
                     </div>
-                    <div
-                      className="w-100 h-100"
-                      style={{ backgroundColor: "rgba(67, 67, 67, 0.7)" }}
-                    ></div>
+                  </div>
+                  <div
+                    className="flex flex-col h-78 rounded-3xl justify-end p-3"
+                    style={{
+                      backgroundImage:
+                        "linear-gradient(180deg, rgba(67, 67, 67, 0.1), rgba(0,0,0,0.4))",
+                    }}
+                  >
+                    <div className="flex w-12/12  p-2">
+                      <input
+                        type="chat"
+                        className="w-11/12 h-10 rounded-2xl mr-2"
+                        style={{ backgroundColor: "rgba(95,95,95, 1)" }}
+                      />
+                      <button
+                        onClick={() => {
+                          sendMessage();
+                        }}
+                        className="h-10 w-10 rounded-full justify-center flex items-center"
+                        type="submit"
+                        aria-label="Send message"
+                        style={{ backgroundColor: "rgb(89, 49, 177)" }}
+                      >
+                        <AiOutlineArrowRight
+                          className="text-white text-2xl"
+                          style={{ marginTop: "2px" }}
+                        />
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
