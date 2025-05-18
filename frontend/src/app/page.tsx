@@ -27,7 +27,10 @@ export default function Home() {
               <div className="flex w-full gap-2">
                 <div
                   className="w-1/4 justify-center p-3 rounded h-100"
-                  style={{ backgroundColor: "rgba(67, 67, 67, 1)" }}
+                  style={{
+                    backgroundImage:
+                      "linear-gradient(180deg, rgba(67, 67, 67, 0.1), rgba(0,0,0,0.4))",
+                  }}
                 >
                   <p className="text-xl font-bold text-white">Chat Rooms</p>
                   <div>Bank Team</div>
@@ -35,7 +38,10 @@ export default function Home() {
                 <div className="h-100 w-1 rounded-2xl bg-emerald-50" />
                 <div
                   className="h-100 w-full rounded"
-                  style={{ backgroundColor: "rgba(67, 67, 67, 0.7)" }}
+                  style={{
+                    backgroundImage:
+                      "linear-gradient(180deg, rgba(67, 67, 67, 0.1), rgba(0,0,0,0.4))",
+                  }}
                 >
                   <div className="flex flex-col justify-center p-3">
                     <p className="text-xl font-bold text-white">
@@ -66,17 +72,11 @@ export default function Home() {
                       </button>
                     </div>
                   </div>
-                  <div
-                    className="flex flex-col h-78 rounded-3xl justify-end p-3"
-                    style={{
-                      backgroundImage:
-                        "linear-gradient(180deg, rgba(67, 67, 67, 0.1), rgba(0,0,0,0.4))",
-                    }}
-                  >
+                  <div className="flex flex-col h-78 rounded-3xl justify-end p-3">
                     <div className="flex w-12/12  p-2">
                       <input
                         type="chat"
-                        className="w-11/12 h-10 rounded-2xl mr-2"
+                        className="w-11/12 h-10 rounded-2xl mr-2 p-2"
                         style={{ backgroundColor: "rgba(95,95,95, 1)" }}
                       />
                       <button
