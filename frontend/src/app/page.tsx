@@ -1,11 +1,25 @@
 "use client";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AiOutlineArrowRight } from "react-icons/ai";
+import ItemList from "./components/ItemList";
 
 export default function Home() {
   const [nickname, setNickname] = useState("");
-  const [room, setRoom] = useState("");
+  const [room, setRoom] = useState(["Banking", "Gaming", "Movies"]);
+
+  useEffect(() => {
+    connectToServer();
+  }, []);
+
+  const connectToServer = async () => {
+    console.log("Trying connection to the server");
+    const ws = new WebSocket("ws://localhost:8080");
+    ws.onopen = () => {
+      console.log("Connected to the server");
+      ws.send(JSON.stringify({ type: "join", room, nickname }));
+    };
+  };
 
   const sendMessage = () => {
     console.log("Sending mesage to the server");
@@ -32,8 +46,10 @@ export default function Home() {
                       "linear-gradient(180deg, rgba(67, 67, 67, 0.1), rgba(0,0,0,0.4))",
                   }}
                 >
-                  <p className="text-xl font-bold text-white">Chat Rooms</p>
-                  <div>Bank Team</div>
+                  <p className="text-xl font-bold pb-2 text-white">
+                    Chat Rooms
+                  </p>
+                  <ItemList items={room.map((name) => ({ name }))} />
                 </div>
                 <div className="h-100 w-1 rounded-2xl bg-emerald-50" />
                 <div
