@@ -8,9 +8,10 @@ type Item = {
 
 type ItemListProps = {
   items: Item[];
+  onItemClick: (item: Item) => void;
 };
 
-const ItemList = ({ items }: ItemListProps) => {
+const ItemList = ({ items, onItemClick }: ItemListProps) => {
   return (
     <div className="">
       {items.map((item, index) => (
@@ -18,7 +19,9 @@ const ItemList = ({ items }: ItemListProps) => {
           key={index}
           className="flex items-center justify-between border-b border-gray-200"
         >
-          <span>{item.name ? item.name : `Item ${index + 1}`}</span>
+          <button onClick={() => onItemClick(item)}>
+            <span>{item.name ? item.name : `Item ${index + 1}`}</span>
+          </button>
           <div />
         </div>
       ))}
