@@ -1,0 +1,10 @@
+# Ignore the app binary
+app
+
+# Ignore other common Go build artifacts
+*.exe
+*.out
+*.log
+
+# Ignore Go module files (if not needed)
+vendor/
