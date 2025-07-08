@@ -1,12 +1,13 @@
 "use client";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { AiOutlineArrowRight } from "react-icons/ai";
 import ItemList from "./components/ItemList";
 
 export default function Home() {
   const [nickname, setNickname] = useState("");
   const [room, setRoom] = useState(["Banking", "Gaming", "Movies"]);
+  const inputRef = useRef<HTMLInputElement | null>(null);
 
   useEffect(() => {
     connectToServer();
@@ -22,7 +23,17 @@ export default function Home() {
   };
 
   const sendMessage = () => {
-    console.log("Sending mesage to the server");
+    if (inputRef.current) {
+      const message = inputRef.current.value;
+      if (message.trim() !== "") {
+        console.log("Sending message:", message);
+        inputRef.current.value = "";
+      } else {
+        console.log("Message is empty, not sending.");
+      }
+    } else {
+      console.log("Input reference is null.");
+    }
   };
 
   const handleRoomItemClick = (item: { name?: string }) => {
@@ -107,14 +118,14 @@ export default function Home() {
                     </div>
                     <div className="flex w-12/12  p-2">
                       <input
+                        ref={inputRef}
+                        placeholder="Type your message here..."
                         type="chat"
                         className="w-11/12 h-10 rounded-2xl mr-2 p-2"
                         style={{ backgroundColor: "rgba(95,95,95, 1)" }}
                       />
                       <button
-                        onClick={() => {
-                          sendMessage();
-                        }}
+                        onClick={sendMessage}
                         className="h-10 w-10 rounded-full justify-center flex items-center"
                         type="submit"
                         aria-label="Send message"
